@@ -1,6 +1,7 @@
 "use client";
 import BackButton from "@/components/BackButton";
 import BottomNav from "@/components/BottomNav";
+import ManagerBottomNav from "@/components/ManagerBottomNav";
 import Link from "next/link";
 import { notFound, useRouter } from "next/navigation";
 import React from "react";
@@ -85,21 +86,14 @@ const Employee = ({ id }: { id: string }) => {
       <p className="text-gray-700">
         <strong>Phone:</strong> {employee.phone}
       </p>
-
-      <p className="text-sm text-gray-600 mt-4">
-        <strong>Disclaimer:</strong> When you refer this employee, they will be
-        notified. You will not have access to any session reports or
-        discussions. The employee will be informed that you initiated the
-        referral.
+      <p className="text-gray-700">
+        <strong>Phone:</strong> {employee.phone}
+      </p>
+      <p className="text-gray-700">
+        <strong>Attended Session:</strong> 3
       </p>
 
-      <Link
-        href={`/employees/${employee.id}/refer`}
-        className="block text-center bg-black text-white py-2 rounded-md mt-4"
-      >
-        Refer Employee
-      </Link>
-      <BottomNav />
+      <ManagerBottomNav />
     </main>
   );
 };

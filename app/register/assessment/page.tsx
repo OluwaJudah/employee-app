@@ -43,7 +43,7 @@ export default function AssessmentPage() {
 
     localStorage.setItem("assessment", JSON.stringify(Object.values(answers)));
 
-    router.push("/register/practitioner");
+    router.push("/register/book");
   };
 
   return (

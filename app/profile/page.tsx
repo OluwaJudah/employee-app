@@ -98,7 +98,12 @@ export default function ProfilePage() {
           View My Assessments
         </button>
 
-        <button className="w-full border px-4 py-2 rounded-md text-red-600 border-red-600">
+        <button
+          onClick={() => {
+            router.push("/login");
+          }}
+          className="w-full border px-4 py-2 rounded-md text-red-600 border-red-600"
+        >
           Log Out
         </button>
       </div>

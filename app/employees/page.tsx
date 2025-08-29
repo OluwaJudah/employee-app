@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import BackButton from "@/components/BackButton";
+import ManagerBottomNav from "@/components/ManagerBottomNav";
 
 const employees = [
   {
@@ -51,7 +52,7 @@ export default function EmployeeManagementPage() {
   return (
     <main className="p-4 pb-16 space-y-4">
       <div className="flex items-center gap-2">
-        <BackButton url="/menu" />
+        <BackButton url="" />
         <h1 className="text-xl font-bold">Manage Employees</h1>
       </div>
 
@@ -77,6 +78,7 @@ export default function EmployeeManagementPage() {
           </li>
         ))}
       </ul>
+      <ManagerBottomNav />
     </main>
   );
 }

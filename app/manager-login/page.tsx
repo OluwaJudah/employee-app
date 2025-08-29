@@ -10,14 +10,14 @@ export default function LoginPage() {
     if (email.trim()) {
       localStorage.setItem("email", email);
       alert("Login successful");
-      router.push("/dashboard");
+      router.push("/manager-dashboard");
     }
   };
 
   return (
     <main className="p-4 min-h-screen flex items-center justify-center">
       <div className="w-full max-w-sm space-y-6">
-        <h1 className="text-2xl font-semibold text-center">Employee Login</h1>
+        <h1 className="text-2xl font-semibold text-center">Manager / HR Login</h1>
         <p className="text-sm text-gray-500 text-center">
           Enter your email below to log in to your account
         </p>

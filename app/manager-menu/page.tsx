@@ -4,13 +4,11 @@ import {
   VideoIcon,
   HeartPulseIcon,
   UserIcon,
-  BellIcon,
   ChevronRight,
   MenuIcon,
   UsersIcon,
-  Phone,
 } from "lucide-react";
-import BottomNav from "@/components/BottomNav";
+import ManagerBottomNav from "@/components/ManagerBottomNav";
 
 export default function MenuPage() {
   return (
@@ -23,44 +21,22 @@ export default function MenuPage() {
       <ul className="space-y-2">
         <li>
           <Link
+            href="/employees"
+            className="flex items-center justify-between border p-4 rounded-md"
+          >
+            <span className="flex items-center gap-3">
+              <UsersIcon className="w-5 h-5" /> Employees
+            </span>
+            <ChevronRight className="w-5 h-5 text-gray-800" />
+          </Link>
+        </li>
+        <li>
+          <Link
             href="/resources"
             className="flex items-center justify-between border p-4 rounded-md"
           >
             <span className="flex items-center gap-3">
-              <BookIcon className="w-5 h-5" /> Resources
-            </span>
-            <ChevronRight className="w-5 h-5 text-gray-800" />
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/webinars"
-            className="flex items-center justify-between border p-4 rounded-md"
-          >
-            <span className="flex items-center gap-3">
-              <VideoIcon className="w-5 h-5" /> Webinars
-            </span>
-            <ChevronRight className="w-5 h-5 text-gray-800" />
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/assessments"
-            className="flex items-center justify-between border p-4 rounded-md"
-          >
-            <span className="flex items-center gap-3">
-              <HeartPulseIcon className="w-5 h-5" /> Assessments
-            </span>
-            <ChevronRight className="w-5 h-5 text-gray-800" />
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/support"
-            className="flex items-center justify-between border p-4 rounded-md"
-          >
-            <span className="flex items-center gap-3">
-              <Phone className="w-5 h-5" /> Call or WhatsApp
+              <BookIcon className="w-5 h-5" /> Reports
             </span>
             <ChevronRight className="w-5 h-5 text-gray-800" />
           </Link>
@@ -76,20 +52,8 @@ export default function MenuPage() {
             <ChevronRight className="w-5 h-5 text-gray-800" />
           </Link>
         </li>
-        <li>
-          <Link
-            href="/notifications"
-            className="flex items-center justify-between border p-4 rounded-md"
-          >
-            <span className="flex items-center gap-3">
-              <BellIcon className="w-5 h-5" /> Notifications
-            </span>
-            <ChevronRight className="w-5 h-5 text-gray-800" />
-          </Link>
-        </li>
       </ul>
-
-      <BottomNav />
+      <ManagerBottomNav />
     </main>
   );
 }

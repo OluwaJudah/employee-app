@@ -9,8 +9,9 @@ export default function RegisterPage() {
     email: "",
     age: "",
     gender: "",
+    employeeNo: "",
   });
-  const [agreed, setAgreed] = useState(false);
+  const [showPopia, setShowPopia] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -19,15 +20,25 @@ export default function RegisterPage() {
   };
 
   const handleSubmit = () => {
-    if (form.name && form.email && agreed) {
+    if (form.name && form.email) {
+      // Save user details to localStorage
       localStorage.setItem("user", JSON.stringify(form));
-      alert("Registration successful");
-      router.push("/register/assessment");
+
+      // Show POPIA Terms popup
+      setShowPopia(true);
+    } else {
+      alert("Please complete all required fields.");
     }
   };
 
+  const handleConfirm = () => {
+    setShowPopia(false);
+    alert("Registration successful");
+    router.push("/register/contact-details");
+  };
+
   return (
-    <main className="p-4 min-h-screen flex flex-col justify-center">
+    <main className="p-4 min-h-screen flex flex-col justify-center bg-white text-black">
       <div className="w-full max-w-sm space-y-4 mx-auto">
         <h1 className="text-2xl font-semibold text-center">Create Account</h1>
 
@@ -65,34 +76,86 @@ export default function RegisterPage() {
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
-
-        <label className="flex items-start gap-2 text-sm text-gray-700">
-          <input
-            type="checkbox"
-            checked={agreed}
-            onChange={(e) => setAgreed(e.target.checked)}
-            className="mt-1"
-          />
-          <span>
-            I agree to the{" "}
-            <a href="/terms" className="underline">
-              Terms and Conditions (POPIA)
-            </a>
-          </span>
-        </label>
+        <input
+          name="employeeNo"
+          value={form.employeeNo}
+          onChange={handleChange}
+          placeholder="Employee No.:"
+          className="w-full px-4 py-2 border rounded-md"
+        />
 
         <button
           onClick={handleSubmit}
-          disabled={!agreed}
-          className={`w-full py-2 rounded-md ${
-            agreed
-              ? "bg-black text-white"
-              : "bg-gray-300 text-gray-500 cursor-not-allowed"
-          }`}
+          className="w-full py-2 rounded-md bg-black text-white hover:bg-gray-900 transition"
         >
-          Continue to Assessment
+          Continue
         </button>
       </div>
+
+      {/* POPIA Modal */}
+      {showPopia && (
+        <div className="fixed inset-0 bg-gray-600/10 flex items-center justify-center p-4">
+          <div className="bg-white text-black rounded-md shadow-lg w-full max-w-md max-h-[80vh] flex flex-col">
+            <h2 className="text-xl font-semibold p-4 border-b">
+              POPIA Terms & Conditions
+            </h2>
+
+            {/* Scrollable Content */}
+            <div className="p-4 overflow-y-auto flex-1 text-sm space-y-2">
+              <p>
+                By continuing, you agree that your personal data will be
+                processed in compliance with the Protection of Personal
+                Information Act (POPIA).
+              </p>
+              <p>
+                Your data will only be used for counselling services,
+                appointment management, and secure record keeping. We will never
+                share your information without your consent.
+              </p>
+              <p>
+                You may request access, correction, or deletion of your
+                information at any time by contacting our support team.
+              </p>
+              <p>
+                Please review our full privacy policy for detailed information.
+              </p>{" "}
+              <p>
+                By continuing, you agree that your personal data will be
+                processed in compliance with the Protection of Personal
+                Information Act (POPIA).
+              </p>
+              <p>
+                Your data will only be used for counselling services,
+                appointment management, and secure record keeping. We will never
+                share your information without your consent.
+              </p>
+              <p>
+                You may request access, correction, or deletion of your
+                information at any time by contacting our support team.
+              </p>
+              <p>
+                Please review our full privacy policy for detailed information.
+              </p>
+            </div>
+
+            {/* Footer Buttons */}
+            <div className="p-4 border-t flex justify-between">
+              <button
+                onClick={() => setShowPopia(false)}
+                className="px-4 py-2 border rounded-md hover:bg-gray-100"
+              >
+                Close
+              </button>
+              <button
+                onClick={handleConfirm}
+                className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-900"
+              >
+                I Agree & Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

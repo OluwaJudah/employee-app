@@ -19,7 +19,7 @@ export default function AppointmentConfirm() {
   const [sessionType, setSessionType] = useState("");
   const [language, setLanguage] = useState("");
   const [dateTime, setDateTime] = useState("");
-  
+
   const [practitioner, setPractitioner] = useState<Practitioner | null>(null);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function AppointmentConfirm() {
   const handleConfirm = () => {
     // In a real app, you'd POST this data to an API.
     alert("Session booked successfully!");
-    router.push("/appointments/confirmed");
+    router.push("/dashboard");
   };
 
   return (
