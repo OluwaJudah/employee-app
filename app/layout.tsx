@@ -32,9 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        {children}
+        <div className="md:w-full md:max-w-sm md:border md:mx-auto md:rounded-xl md:m-8">
+          {children}
+        </div>
       </body>
     </html>
   );
